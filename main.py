@@ -1,14 +1,24 @@
 import os, sys
+import tkinter
 from PIL import Image
 
-#  Image path
-path = "images/image0.png"
 
-#  Splitting image into path/name and format
-f, e = os.path.splitext(path)
+class ImageConv:
+    def __init__(self, master):
+        self.master = master
+        self.mainframe = tkinter.Frame(self.master, bg="blue")
+        self.mainframe.pack(fill=tkinter.BOTH, expand=True)
 
-#  Combining path/name and the new format
-output = f + ".jpeg"
+        #  Calling methods
+        self.build_grid()
 
-#  Changing the format
-os.rename(r'images\image0.png', r'{}'.format(output))
+    def build_grid(self):
+        self.mainframe.columnconfigure(0, weight=1)
+        self.mainframe.columnconfigure(1, weight=1)
+        self.mainframe.rowconfigure(0, weight=0)
+        self.mainframe.rowconfigure(1, weight=1)
+
+if __name__ == "__main__":
+    root = tkinter.Tk()
+    ImageConv(root)
+    root.mainloop()
