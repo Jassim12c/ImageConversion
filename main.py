@@ -6,12 +6,13 @@ from PIL import Image
 class ImageConv:
     def __init__(self, master):
         self.master = master
-        self.mainframe = tkinter.Frame(self.master, bg="blue")
+        self.mainframe = tkinter.Frame(self.master, bg="black")
         self.mainframe.pack(fill=tkinter.BOTH, expand=True)
 
         #  Calling methods
         self.build_grid()
         self.build_banner()
+        self.build_button()
 
     def build_grid(self):
         self.mainframe.columnconfigure(0, weight=1)
@@ -24,8 +25,8 @@ class ImageConv:
         banner = tkinter.Label(
             self.mainframe,
             text="Image Conversion",
-            bg="blue",
-            fg="black",
+            bg="black",
+            fg="white",
             font=("Courier", 24)
         )
         banner.grid(
@@ -33,6 +34,25 @@ class ImageConv:
             sticky="ew",
             padx=10, pady=10,
         )
+
+    def build_button(self):
+        button_frame = tkinter.Frame(self.mainframe)
+        button_frame.grid(row=1, column=0, padx=10, pady=10)
+
+        self.button_png = tkinter.Button(
+            self.mainframe,
+            text="Convert to PNG",
+            font=("Courier", 20),
+        )
+
+        self.button_jpeg = tkinter.Button(
+            self.mainframe,
+            text="Convert to JPEG",
+            font=("Courier", 20)
+        )
+
+        self.button_png.grid(row=1, column=0)
+        self.button_jpeg.grid(row=1, column=2)
 
 if __name__ == "__main__":
     root = tkinter.Tk()
