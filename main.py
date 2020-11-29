@@ -1,5 +1,7 @@
 import os, sys
 import tkinter
+
+from tkinter import filedialog
 from PIL import Image
 
 
@@ -48,15 +50,22 @@ class ImageConv:
         self.button_jpeg = tkinter.Button(
             self.mainframe,
             text="Convert to JPEG",
-            font=("Courier", 20)
+            font=("Courier", 20),
+            command=self.convert_to_jpeg,
         )
 
         self.button_png.grid(row=1, column=0)
         self.button_jpeg.grid(row=1, column=2)
 
+    def convert_to_jpeg(self):
+        """Get png file and convert it to jpeg"""
+        root.filename = filedialog.askopenfile(initialdir="/", title="Select file", filetypes=
+        (("png files", "*.png"), ("all files", "*.*")))
+        r, f = os.path.splitext(root.filename.name)
+        print(f)
+
+
 if __name__ == "__main__":
     root = tkinter.Tk()
     ImageConv(root)
     root.mainloop()
-
-
