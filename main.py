@@ -59,13 +59,20 @@ class ImageConv:
 
     def convert_to_jpeg(self):
         """Get png file and convert it to jpeg"""
-        root.filename = filedialog.askopenfile(initialdir="/", title="Select file", filetypes=
-        (("png files", "*.png"), ("all files", "*.*")))
-        r, f = os.path.splitext(root.filename.name)
-        print(f)
+        root.filename = filedialog.askopenfile(initialdir="/", title="Select file", filetypes=(
+            ("png files", "*.png"),
+            ("all files", "*.*"))
+                                               )
+        print(root.file)
+        try:
+            r, f = os.path.splitext(root.filename.name)
+            print(f)
+        except AttributeError:
+            pass
 
 
 if __name__ == "__main__":
     root = tkinter.Tk()
+    root.resizable(False, False)
     ImageConv(root)
     root.mainloop()
