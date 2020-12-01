@@ -1,11 +1,18 @@
-import os, sys
+#  Standard library imports
+import os
+import sys
 import tkinter
-
+import logging
 from tkinter import filedialog
+
+#  Third party imports
 from PIL import Image
 
+#  Local imports
+from setup_logger import logger
 
 class ImageConv:
+
     def __init__(self, master):
         self.master = master
         self.mainframe = tkinter.Frame(self.master, bg="black")
@@ -63,10 +70,9 @@ class ImageConv:
             ("png files", "*.png"),
             ("all files", "*.*"))
                                                )
-        print(root.file)
         try:
             r, f = os.path.splitext(root.filename.name)
-            print(f)
+            logger.info(" Getting png file")
         except AttributeError:
             pass
 
