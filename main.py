@@ -52,6 +52,7 @@ class ImageConv:
             self.mainframe,
             text="Convert to PNG",
             font=("Courier", 20),
+            command=self.convert_to_png,
         )
 
         self.button_jpeg = tkinter.Button(
@@ -76,6 +77,19 @@ class ImageConv:
         except AttributeError:
             pass
 
+    def convert_to_png(self):
+        """Get jpeg file and convert it to png"""
+        root.filename = filedialog.askopenfile(initialdir="/", title="Select file", filetypes=(
+            ("jpeg files", "*.jpeg"),
+            ("all files", "."))
+
+                                                )
+
+        try:
+            r, f = os.path.splitext(root.filename.name)
+            logger.info(" Getting jpeg file")
+        except AttributeError:
+            pass
 
 if __name__ == "__main__":
     root = tkinter.Tk()
