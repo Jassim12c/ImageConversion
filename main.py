@@ -71,9 +71,11 @@ class ImageConv:
             ("png files", "*.png"),
             ("all files", "*.*"))
                                                )
+        root.filename.close()
         try:
             r, f = os.path.splitext(root.filename.name)
             logger.info(" Getting png file")
+            os.rename(r'{}'.format(root.filename.name), r'{}.jpeg'.format(r))
         except AttributeError:
             pass
 
@@ -82,12 +84,14 @@ class ImageConv:
         root.filename = filedialog.askopenfile(initialdir="/", title="Select file", filetypes=(
             ("jpeg files", "*.jpeg"),
             ("all files", "."))
-
-                                                )
-
+                                               )
+        root.filename.close()
         try:
             r, f = os.path.splitext(root.filename.name)
             logger.info(" Getting jpeg file")
+            os.rename(r'{}'.format(root.filename.name), r'{}.png'.format(r))
+            logger.info(" Converting file")
+            logger.info(" File converted")
         except AttributeError:
             pass
 
