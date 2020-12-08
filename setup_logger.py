@@ -1,6 +1,10 @@
 #  Standard imports
 import logging
+import os
 from datetime import datetime
+
+if not os.path.exists("main.log"):
+    open("main.log", 'x')
 
 now = datetime.now()
 date = now.strftime("%Y/%m/%d %A %I:%M:%S%p")
