@@ -1,12 +1,10 @@
 #  Standard library imports
 import os
-import sys
 import tkinter
-import logging
 from tkinter import filedialog
+from tkinter import messagebox
 
 #  Third party imports
-from PIL import Image
 
 #  Local imports
 from setup_logger import logger
@@ -76,6 +74,9 @@ class ImageConv:
             r, f = os.path.splitext(root.filename.name)
             logger.info(" Getting png file")
             os.rename(r'{}'.format(root.filename.name), r'{}.jpeg'.format(r))
+            messagebox.showinfo(title="SUCCESS!", message="Image converted to JPEG successfully")
+            logger.info(" Converting file")
+            logger.info(" File converted")
         except AttributeError:
             pass
 
@@ -92,11 +93,13 @@ class ImageConv:
             os.rename(r'{}'.format(root.filename.name), r'{}.png'.format(r))
             logger.info(" Converting file")
             logger.info(" File converted")
+            messagebox.showinfo(title="SUCCESS!", message="Image converted PNG successfully")
         except AttributeError:
             pass
 
 if __name__ == "__main__":
     root = tkinter.Tk()
+    root.title("Image Conversion")
     root.resizable(False, False)
     ImageConv(root)
     root.mainloop()
